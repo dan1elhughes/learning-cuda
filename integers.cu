@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 __global__ void add(int *a, int *b, int *c) {
 	*c = *a + *b;
 }
@@ -21,7 +23,7 @@ int main(void) {
     cudaMemcpy(gpu_b, &b, size, cudaMemcpyHostToDevice);
 
     // Launch add() kernel on GPU
-    add <<< 1, 1 >>> (gpu_a, gpu_b, gpu_c);
+    add <<<1, 1>>> (gpu_a, gpu_b, gpu_c);
 
     // Copy result back to host
     cudaMemcpy(&c, gpu_c, size, cudaMemcpyDeviceToHost);
@@ -30,6 +32,6 @@ int main(void) {
     cudaFree(gpu_a);
     cudaFree(gpu_b);
     cudaFree(gpu_c);
-    print("%i", c)
+    print("%i", c);
     return 0;
 }
