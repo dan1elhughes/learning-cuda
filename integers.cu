@@ -32,6 +32,6 @@ int main(void) {
     cudaFree(gpu_a);
     cudaFree(gpu_b);
     cudaFree(gpu_c);
-    print("%i", c);
+    printf("%i", c);
     return 0;
 }
